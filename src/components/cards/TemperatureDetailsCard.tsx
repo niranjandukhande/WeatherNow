@@ -26,7 +26,7 @@ export default function TemperatureDetailsCard({ coords }: Props) {
       {temps.map((item, index) => (
         <div
           key={index}
-          className="bg-zinc-800 rounded-xl p-5 flex flex-col items-center justify-center"
+          className="bg-background rounded-xl p-5 flex flex-col items-center justify-center"
         >
           <p className="text-2xl font-semibold">{Math.round(item.value)}°C</p>
           <p className="text-sm text-zinc-400 mt-1">{item.label}</p>

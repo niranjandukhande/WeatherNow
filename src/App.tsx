@@ -1,7 +1,7 @@
 import MainWeatherCard from "./components/cards/MainWeatherCard";
 import TemperatureDetailsCard from "./components/cards/TemperatureDetailsCard";
 import Map from "./components/Map";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import type { Coords } from "./types";
 import LocationDropdown from "./components/dropdowns/LocationDropdown";
 
@@ -9,6 +9,8 @@ import { getGeocode } from "./api";
 import { useQuery } from "@tanstack/react-query";
 import MapTypeDropdown from "./components/dropdowns/MapTypeDropdown";
 import MapLegend from "./components/MapLegend";
+import MainWeatherCardSkeleton from "./components/skeletons/MainWeatherCardSkeleton";
+import TemperatureDetailsCardSkeleton from "./components/skeletons/TemperatureDetail";
 
 function App() {
   const [coordinates, setCoords] = useState<Coords>({
@@ -59,8 +61,12 @@ function App() {
         <Map coords={coords} onMapClick={onMapClick} mapType={mapType} />
         <MapLegend mapType={mapType} />
       </div>
-      <MainWeatherCard coords={coords} />
-      <TemperatureDetailsCard coords={coords} />
+      <Suspense fallback={<MainWeatherCardSkeleton />}>
+        <MainWeatherCard coords={coords} />
+      </Suspense>
+      <Suspense fallback={<TemperatureDetailsCardSkeleton />}>
+        <TemperatureDetailsCard coords={coords} />
+      </Suspense>
     </div>
   );
 }
