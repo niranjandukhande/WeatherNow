@@ -8,17 +8,17 @@ import {
 } from "@/components/ui/select";
 import type { Dispatch, SetStateAction } from "react";
 
-interface LocationDropdownProps {
-  location: string;
-  setLocation: Dispatch<SetStateAction<string>>;
+interface MapTypeDropdownProps {
+  mapType: string;
+  setMapType: Dispatch<SetStateAction<string>>;
 }
 
-export default function LocationDropdown({
-  location,
-  setLocation,
-}: LocationDropdownProps) {
+export default function MapTypeDropdown({
+  mapType,
+  setMapType,
+}: MapTypeDropdownProps) {
   return (
-    <Select value={location} onValueChange={(value) => setLocation(value)}>
+    <Select value={mapType} onValueChange={(value) => setMapType(value)}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Location" />
       </SelectTrigger>
@@ -27,10 +27,9 @@ export default function LocationDropdown({
           {/*<SelectItem value="light">Light</SelectItem>
           <SelectItem value="dark">Dark</SelectItem>
           <SelectItem value="system">System</SelectItem>*/}
-          <SelectItem value="custom">Custom</SelectItem>
-          {locations.map((city) => (
-            <SelectItem key={city} value={city}>
-              {city}
+          {types.map((type) => (
+            <SelectItem key={type} value={type} className="capitalize">
+              {type.split("_")[0]}
             </SelectItem>
           ))}
         </SelectGroup>
@@ -39,15 +38,10 @@ export default function LocationDropdown({
   );
 }
 
-const locations = [
-  "New York",
-  "London",
-  "Paris",
-  "Tokyo",
-  "Dubai",
-  "Singapore",
-  "Sydney",
-  "Toronto",
-  "Mumbai",
-  "Berlin",
+const types = [
+  "clouds_new",
+  "precipitation_new",
+  "pressure_new",
+  "wind_new",
+  "temp_new",
 ];
