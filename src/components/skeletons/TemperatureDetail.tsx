@@ -3,7 +3,10 @@ import { Skeleton } from "../ui/skeleton";
 
 export default function TemperatureDetailsCardSkeleton() {
   return (
-    <Card title="Temperature" childrenClassName="grid grid-cols-2 gap-4">
+    <Card
+      title="Temperature"
+      childrenClassName="grid grid-cols-2 gap-4 2xl:justify-between"
+    >
       {Array.from({ length: 4 }).map((_, index) => (
         <div
           key={index}

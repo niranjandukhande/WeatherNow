@@ -5,7 +5,7 @@ export default function MainWeatherCardSkeleton() {
   return (
     <Card
       title="Current Weather"
-      childrenClassName="flex flex-col items-center text-center gap-4"
+      childrenClassName="flex flex-col items-center text-center gap-4 2xl:justify-between"
     >
       <div className="flex flex-col gap-2 items-center">
         <Skeleton className="w-50 h-15" />

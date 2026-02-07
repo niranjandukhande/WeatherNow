@@ -1,3 +1,4 @@
+import { AirPollutionSchema } from "./schemas/airPollutionSchema";
 import { GeocodeSchema } from "./schemas/geocodeSchema";
 import { WeatherResponseSchema } from "./schemas/weatherSchema";
 
@@ -25,3 +26,18 @@ export async function getGeocode(location: string) {
   return GeocodeSchema.parse(data);
 }
 // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
+
+export async function getAirPollution({
+  latitude,
+  longitude,
+}: {
+  latitude: number;
+  longitude: number;
+}) {
+  const res = await fetch(
+    `http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`,
+  );
+  const data = await res.json();
+  return AirPollutionSchema.parse(data);
+}
+// http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={API key}

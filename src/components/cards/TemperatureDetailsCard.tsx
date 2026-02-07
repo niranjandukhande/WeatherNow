@@ -22,7 +22,10 @@ export default function TemperatureDetailsCard({ coords }: Props) {
   ];
 
   return (
-    <Card title="Temperature" childrenClassName="grid grid-cols-2 gap-4">
+    <Card
+      title="Temperature"
+      childrenClassName="grid grid-cols-2 gap-4 2xl:justify-between"
+    >
       {temps.map((item, index) => (
         <div
           key={index}

@@ -3,9 +3,19 @@ import "leaflet/dist/leaflet.css";
 import type { Coords } from "../types";
 import { useEffect } from "react";
 import { MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
+import L from "leaflet";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const MAPTILER_API_KEY = import.meta.env.VITE_MAPTILER_API_KEY;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 interface Props {
   coords: Coords;
@@ -19,7 +29,7 @@ export default function Map({ coords, onMapClick, mapType }: Props) {
     <MapContainer
       center={[latitude, longitude]}
       zoom={5}
-      style={{ width: "1000px", height: "500px" }}
+      style={{ width: "100%", height: "100%" }}
     >
       <MapClick onMapClick={onMapClick} coords={coords} />
       <MapTileLayer />
