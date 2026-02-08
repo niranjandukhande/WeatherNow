@@ -49,7 +49,6 @@ function App() {
           latitude: geoCodeData?.[0].lat ?? 0,
           longitude: geoCodeData?.[0].lon ?? 0,
         };
-  console.log(coords);
 
   return (
     <>

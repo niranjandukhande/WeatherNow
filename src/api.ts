@@ -20,7 +20,7 @@ export async function getWeather({ latitude, longitude }: getWeatherInput) {
 
 export async function getGeocode(location: string) {
   const res = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`,
+    `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`,
   );
   const data = await res.json();
   return GeocodeSchema.parse(data);
@@ -35,7 +35,7 @@ export async function getAirPollution({
   longitude: number;
 }) {
   const res = await fetch(
-    `http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`,
+    `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`,
   );
   const data = await res.json();
   return AirPollutionSchema.parse(data);
